@@ -15,8 +15,9 @@ class ChirpController extends Controller
     //ChirpControllerのindexメソッド
     public function index(): View
     {
-        //resources/views/chirpsディレクトリのindex.blade.phpを返す処理
-        return view('chirps.index');
+        return view('chirps.index', [
+            'chirps' => Chirp::with('user')->latest()->get(),
+        ]);
     }
 
     /**
